@@ -5,14 +5,15 @@ public class Engine {
     private FuelType type;
     private final double max;
     private double currentFuel;
-    private static final double FILLAMOUNT = -50;
+    private static final double FILLAMOUNT = 50;
+    private boolean check;
 
     /* Constructor */
 
-    public Engine(FuelType f, double maxFuel, double fuelLevel) {
+    public Engine(FuelType f, double maxFuel) {
         this.type = f;
         this.max = maxFuel;
-        this.currentFuel = fuelLevel;
+        this.currentFuel = maxFuel;
     }
 
     /* Getters */
@@ -32,17 +33,21 @@ public class Engine {
             System.out.println("No fuel added. Current fuel: " + getFuel());
             return;   
         }
+        /* 
         if (amt < 0) { // negative amount entered
             System.out.println("Cannot add negative fuel. Current fuel: " + getFuel());  
             return;
         }
+        */
         if ((amt + this.currentFuel) < max) { // check that tank has space
             this.currentFuel = amt + this.currentFuel;
-            System.out.println("Tank filled, new fuel level: " + getFuel());     
+            System.out.println("New fuel level: " + getFuel());
+                 
         }
-        else { // if amount is too high, fill tank to max
+        if ((amt + this.currentFuel) > max) { // if amount is too high, fill tank to max
             this.currentFuel = this.max;
             System.out.println("Tank filled, fuel level: " + getFuel()); 
+            
         }
 
 
@@ -62,15 +67,47 @@ public class Engine {
             setFuelLevel(FILLAMOUNT);
         }
     }
-
+    public boolean go() {
+        if (getFuel()>0) {
+            setFuelLevel(-10);
+            System.out.println(getFuel() + " units of fuel remaining.");
+            if (getFuel()>0) {
+                check = true;
+            }
+        }
+        if (getFuel() <= 0) {
+            check = false;
+        }
+        return check;
+    }
 
 
     public static void main(String[] args) {
-        Engine angie = new Engine(FuelType.STEAM, 120, 70);
+        /*
+        Engine angie = new Engine(FuelType.STEAM, 120);
         System.out.println("Engine has " + angie.getFuel() + " units of fuel remaining.");
 
         angie.refuel();
         System.out.println("Engine has " + angie.getFuel() + " units of fuel remaining.");
+        */
+        Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
+        /* 
+        while (myEngine.go()) {
+            System.out.println("Choo choo!");
+           
+        }
+        System.out.println("Out of fuel.");
+        */
+        for (int i = 0; i < 4; i++) {
+            while (myEngine.go()) {
+                System.out.println("Choo choo!");
+           
+            }
+            System.out.println("Out of fuel.");
+            myEngine.refuel();
+
+        }
+        
     }
 
 }
