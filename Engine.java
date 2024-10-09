@@ -83,13 +83,7 @@ public class Engine {
 
 
     public static void main(String[] args) {
-        /*
-        Engine angie = new Engine(FuelType.STEAM, 120);
-        System.out.println("Engine has " + angie.getFuel() + " units of fuel remaining.");
 
-        angie.refuel();
-        System.out.println("Engine has " + angie.getFuel() + " units of fuel remaining.");
-        */
         Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
         /* 
         while (myEngine.go()) {
@@ -105,7 +99,6 @@ public class Engine {
             }
             System.out.println("Out of fuel.");
             myEngine.refuel();
-
         }
         
     }
