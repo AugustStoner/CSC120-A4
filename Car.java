@@ -1,5 +1,5 @@
 import java.util.*;  
-import javax.swing.text.DefaultEditorKit;
+
 public class Car {
 
     /* Attributes */
@@ -84,6 +84,11 @@ public class Car {
         Passenger pat = new Passenger("Patrick");
         Passenger alec = new Passenger("Alexander");
         Passenger jean = new Passenger("Jeannie");
-       
+        pat.boardCar(myCar);
+        myCar.printManifest();
+        alec.boardCar(myCar);
+        jean.boardCar(myCar);
+        pat.getOffCar(myCar);
+        myCar.printManifest();
     }
 }
