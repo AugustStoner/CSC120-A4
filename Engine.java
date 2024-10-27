@@ -21,7 +21,7 @@ public class Engine {
     public double getFuel() {
         return this.currentFuel;
     }
-    public double getMaxFuel() {
+    private double getMaxFuel() {
         return this.max;
     }
 
@@ -59,7 +59,7 @@ public class Engine {
 
     /* Methods */
 
-    public void refuel() {
+    private void refuel() {
         if (getFuel() <= 0) { // if filling fuel out of necessity, max tank
             setFuelLevel();
         }
@@ -67,7 +67,7 @@ public class Engine {
             setFuelLevel(FILLAMOUNT);
         }
     }
-    public boolean go() {
+    private boolean go() {
         if (getFuel()>0) {
             setFuelLevel(-10);
             System.out.println(getFuel() + " units of fuel remaining.");
@@ -81,25 +81,22 @@ public class Engine {
         return check;
     }
 
+    public String toString(){
+        String s = String.format("%s", this.type);
+        
+        return("This is an Engine with fuel type " + s.toLowerCase() + " and fuel level " + this.currentFuel);
+    }
+
 
     public static void main(String[] args) {
 
         Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
-        /* 
+        System.out.println(myEngine.toString());
+        
         while (myEngine.go()) {
             System.out.println("Choo choo!");
-           
         }
         System.out.println("Out of fuel.");
-        */
-        for (int i = 0; i < 4; i++) {
-            while (myEngine.go()) {
-                System.out.println("Choo choo!");
-           
-            }
-            System.out.println("Out of fuel.");
-            myEngine.refuel();
-        }
         
     }
 

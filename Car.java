@@ -20,36 +20,22 @@ public class Car {
         return this.maxCapacity;
     }
     public int seatsRemaining() {
-        /* 
-        try {
-            return (this.maxCapacity - passengersOnboard.size());
-        } catch (Exception NullPointerException) {
-            System.out.println("There are no passengers in the car.");
-            return (this.maxCapacity);
-        }
-        */
         return (this.maxCapacity - passengersOnboard.size());
     }
 
     /* Modifiers */
 
     public boolean addPassenger(Passenger p) {
-        if (this.seatsRemaining() > 0) {                    // there are seats open &
+        if (this.seatsRemaining() > 0) {                           // if there are seats open &
             if (passengersOnboard.contains(p) == true) {
                 System.out.println("This passenger is already on the car!");
                 return false;
                 }
-                else if (passengersOnboard.contains(p) == false) {
-                    passengersOnboard.add(p);                   // add the passenger to the array list
+                else if (passengersOnboard.contains(p) == false) { // the passenger is not already on the car
+                    passengersOnboard.add(p);                      // add the passenger to the array list
                     return true;
                 }
             }
-            /* 
-            if (passengersOnboard.contains(p) == false) {   // the passenger is not already on the car
-                passengersOnboard.add(p);                   // add the passenger to the array list
-                return true;
-            }
-            */
         System.out.println("There are no seats left on this car.");
         return false;
     }
@@ -57,12 +43,9 @@ public class Car {
     public boolean removePassenger(Passenger p) {
         if (passengersOnboard.contains(p) == true) {
             return passengersOnboard.remove(p);
-        }
-        else {
-            System.out.println(p.getName() + " is not on board.");
-            return false;
-        }
-        
+        }  
+        System.out.println(p.getName() + " is not on board.");
+        return false;
     }
 
     public void printManifest() {
@@ -77,7 +60,7 @@ public class Car {
     
 
     public static void main(String[] args) {
-        Car myCar = new Car(100);
+        Car myCar = new Car(3);
         System.out.println("This car has " + myCar.getCapacity() + " total seats.");
         System.out.println("This car has " + myCar.seatsRemaining() + " seats remaining.");
 
@@ -86,9 +69,15 @@ public class Car {
         Passenger jean = new Passenger("Jeannie");
         pat.boardCar(myCar);
         myCar.printManifest();
+        System.out.println("This car has " + myCar.seatsRemaining() + " seats remaining.");
         alec.boardCar(myCar);
         jean.boardCar(myCar);
         pat.getOffCar(myCar);
         myCar.printManifest();
+        Passenger b = new Passenger("Bee");
+        b.boardCar(myCar);
+        pat.boardCar(myCar);
+        pat.getOffCar(myCar);
+        b.getOffCar(myCar);
     }
 }
