@@ -4,14 +4,14 @@ public class Car {
 
     /* Attributes */
 
-    private ArrayList<Passenger> passengersOnboard;
+    private final ArrayList<Passenger> passengersOnboard;
     private final int maxCapacity;
 
     /* Constructor */
 
     public Car(int max) {
         this.maxCapacity = max;
-        this.passengersOnboard = new ArrayList<Passenger>(maxCapacity); // needs to be restricted by max capacity
+        this.passengersOnboard = new ArrayList<>(maxCapacity); // needs to be restricted by max capacity
     }
 
     /* Getters */
@@ -53,7 +53,7 @@ public class Car {
             System.out.println("Car is empty!");
         }
         else {
-            System.out.println("Passengers on board:");
+            //System.out.println("Passengers on board:");
             passengersOnboard.forEach((p) -> System.out.println(p.getName()));
         }
     }

@@ -32,9 +32,9 @@ __**YES**___ 1 pt: The `Car` class has a `printManifest()` method that prints a 
 
 __**YES**___ 1 pt: The `Passenger` class uses appropriate methods from the `Car` class to implement its `boardCar(...)` and `getOffCar(...)` methods
 
-__**NO**___ 1 pt: The `Train` class has all expected attributes / relationships with the other classes
+__**YES**___ 1 pt: The `Train` class has all expected attributes / relationships with the other classes
 
-__**NO**___ 1 pt: The `Train` class has all expected methods, making use of methods from other classes as appropriate
+__**YES**___ 1 pt: The `Train` class has all expected methods, making use of methods from other classes as appropriate
 
 
 
@@ -58,4 +58,4 @@ __**PART**___ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
 __**YES**___ 1 pt: All required files included with submission (including completed `rubric.md` file)
 
-__**NO**___ 1 pt: `reflection.md` contains your reflection on the assignment
+__**YES**___ 1 pt: `reflection.md` contains your reflection on the assignment

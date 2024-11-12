@@ -2,10 +2,9 @@ public class Engine {
 
     /* Attributes */
 
-    private FuelType type;
+    private final FuelType type;
     private final double max;
     private double currentFuel;
-    private static final double FILLAMOUNT = 50;
     private boolean check;
 
     /* Constructor */
@@ -21,6 +20,7 @@ public class Engine {
     public double getFuel() {
         return this.currentFuel;
     }
+
     private double getMaxFuel() {
         return this.max;
     }
@@ -60,20 +60,14 @@ public class Engine {
     /* Methods */
 
     private void refuel() {
-        if (getFuel() <= 0) { // if filling fuel out of necessity, max tank
-            setFuelLevel();
-        }
-        else {                // otherwise, use default amount
-            setFuelLevel(FILLAMOUNT);
-        }
+        setFuelLevel();
     }
+
     private boolean go() {
         if (getFuel()>0) {
             setFuelLevel(-10);
             System.out.println(getFuel() + " units of fuel remaining.");
-            if (getFuel()>0) {
-                check = true;
-            }
+            check = true;       
         }
         if (getFuel() <= 0) {
             check = false;
@@ -92,6 +86,7 @@ public class Engine {
 
         Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
         System.out.println(myEngine.toString());
+        
         
         while (myEngine.go()) {
             System.out.println("Choo choo!");
